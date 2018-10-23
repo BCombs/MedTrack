@@ -23,7 +23,7 @@ public class ListViewModel extends AndroidViewModel {
     /**
      * Checks to see if the list is null, if it is, instantiate it and
      *
-     * @return LiveData<List < Medicine>> The list of medications currently in the database
+     * @return LiveData<List   <   Medicine>> The list of medications currently in the database
      */
     public LiveData<List<Medicine>> getMedList() {
         if (medList == null) {

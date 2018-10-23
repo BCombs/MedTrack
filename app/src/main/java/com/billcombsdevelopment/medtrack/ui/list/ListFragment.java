@@ -36,19 +36,6 @@ public class ListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mViewModel = ViewModelProviders.of(this).get(ListViewModel.class);
-
-        // Create the observer
-        final Observer<List<Medicine>> medicineObserver = new Observer<List<Medicine>>() {
-            @Override
-            public void onChanged(@Nullable List<Medicine> medList) {
-                mAdapter.updateData(medList);
-            }
-        };
-
-        // Start observing
-        mViewModel.getMedList().observe(this, medicineObserver);
     }
 
     @Nullable
@@ -69,9 +56,12 @@ public class ListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         initRecyclerView();
-        mViewModel.insertTestData();
+        retrieveMedList();
     }
 
+    /**
+     * Initializes the RecyclerView, LayoutManager, and Adapter
+     */
     private void initRecyclerView() {
 
         mMedListRv.setHasFixedSize(true);
@@ -82,5 +72,20 @@ public class ListFragment extends Fragment {
         // Set up the Adapter
         mAdapter = new MedListRecyclerViewAdapter();
         mMedListRv.setAdapter(mAdapter);
+    }
+
+    /**
+     * Uses the ViewModel to retrieve data and creates an observer on the LiveData so
+     * when the medicine list is changed, the RecyclerView Adapter's data is updated
+     */
+    private void retrieveMedList() {
+
+        mViewModel = ViewModelProviders.of(this).get(ListViewModel.class);
+        mViewModel.getMedList().observe(this, new Observer<List<Medicine>>() {
+            @Override
+            public void onChanged(@Nullable List<Medicine> medicines) {
+                mAdapter.updateData(medicines);
+            }
+        });
     }
 }

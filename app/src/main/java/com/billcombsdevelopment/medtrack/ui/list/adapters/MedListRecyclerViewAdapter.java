@@ -26,7 +26,7 @@ public class MedListRecyclerViewAdapter extends
     private List<Medicine> mMedList;
 
     public MedListRecyclerViewAdapter() {
-        mMedList = new ArrayList<>();
+        mMedList = new ArrayList();
     }
 
     @NonNull
