@@ -56,7 +56,7 @@ public class ListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         initRecyclerView();
-        retrieveMedList();
+        intiViewModel();
     }
 
     /**
@@ -75,10 +75,9 @@ public class ListFragment extends Fragment {
     }
 
     /**
-     * Uses the ViewModel to retrieve data and creates an observer on the LiveData so
-     * when the medicine list is changed, the RecyclerView Adapter's data is updated
+     * Initializes the VIewModel and creates an Observer for the LiveData
      */
-    private void retrieveMedList() {
+    private void intiViewModel() {
 
         mViewModel = ViewModelProviders.of(this).get(ListViewModel.class);
         mViewModel.getMedList().observe(this, new Observer<List<Medicine>>() {
