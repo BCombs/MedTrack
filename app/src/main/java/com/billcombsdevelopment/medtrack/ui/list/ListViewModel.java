@@ -27,19 +27,8 @@ public class ListViewModel extends AndroidViewModel {
      */
     public LiveData<List<Medicine>> getMedList() {
         if (medList == null) {
-            medList = new MutableLiveData<>();
             medList = medRepo.getMedList();
         }
         return medList;
-    }
-
-    public void insertTestData() {
-        Medicine testMed = new Medicine("Meloxicam", "15 mg",
-                "Take one tablet by mouth every day", 1, "Daily");
-        medRepo.insertTestData(testMed);
-        Medicine secondMed = new Medicine("Meclizine", "25 MG",
-                "Take 1 tablet by mouth 3 times daily as needed for dizziness.",
-                3, "Daily");
-        medRepo.insertTestData(secondMed);
     }
 }

@@ -75,7 +75,7 @@ public class ListFragment extends Fragment {
     }
 
     /**
-     * Initializes the VIewModel and creates an Observer for the LiveData
+     * Initializes the ViewModel and creates an Observer for the LiveData
      */
     private void intiViewModel() {
 
