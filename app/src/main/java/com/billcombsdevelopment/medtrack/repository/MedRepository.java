@@ -26,4 +26,8 @@ public class MedRepository {
     public void insertTestData(Medicine medicine) {
         mDb.medDao().insertMedicine(medicine);
     }
+
+    public LiveData<Medicine> loadMedById(int id) {
+        return mDb.medDao().loadMedById(id);
+    }
 }

@@ -27,4 +27,7 @@ public interface MedDao {
 
     @Delete
     void delete(Medicine medicine);
+
+    @Query("SELECT * FROM medicine WHERE mId = :id")
+    LiveData<Medicine> loadMedById(int id);
 }

@@ -6,10 +6,11 @@ package com.billcombsdevelopment.medtrack.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(indices = {@Index(value = {"med_name"}, unique = true)})
+@Entity(tableName = "medicine",indices = {@Index(value = {"med_name"}, unique = true)})
 public class Medicine {
     @PrimaryKey(autoGenerate = true)
     private int mId;

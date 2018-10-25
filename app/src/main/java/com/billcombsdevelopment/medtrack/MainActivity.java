@@ -1,9 +1,9 @@
 package com.billcombsdevelopment.medtrack;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import com.billcombsdevelopment.medtrack.ui.list.ListFragment;
+import com.billcombsdevelopment.medtrack.ui.MedListFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, ListFragment.newInstance())
+                    .replace(R.id.container, MedListFragment.newInstance())
                     .commitNow();
         }
     }

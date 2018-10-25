@@ -2,7 +2,7 @@
  * Copyright (c) 2018 - Bill Combs
  */
 
-package com.billcombsdevelopment.medtrack.ui.list.adapters;
+package com.billcombsdevelopment.medtrack.ui.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

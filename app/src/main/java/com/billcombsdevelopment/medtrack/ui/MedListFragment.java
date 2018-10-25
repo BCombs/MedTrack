@@ -1,4 +1,4 @@
-package com.billcombsdevelopment.medtrack.ui.list;
+package com.billcombsdevelopment.medtrack.ui;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -11,26 +11,30 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
-import com.billcombsdevelopment.medtrack.ui.list.adapters.MedListRecyclerViewAdapter;
+import com.billcombsdevelopment.medtrack.ui.adapters.MedListRecyclerViewAdapter;
+import com.billcombsdevelopment.medtrack.ui.viewmodels.ListViewModel;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ListFragment extends Fragment {
+public class MedListFragment extends Fragment {
 
     @BindView(R.id.medlist_rv)
     RecyclerView mMedListRv;
+    @BindView(R.id.no_meds_tv)
+    TextView mNoMedsTv;
     private ListViewModel mViewModel;
     private MedListRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    public static ListFragment newInstance() {
-        return new ListFragment();
+    public static MedListFragment newInstance() {
+        return new MedListFragment();
     }
 
     @Override
@@ -42,7 +46,7 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.list_fragment, container, false);
+        return inflater.inflate(R.layout.med_list_fragment, container, false);
     }
 
     @Override
@@ -57,6 +61,7 @@ public class ListFragment extends Fragment {
         ButterKnife.bind(this, view);
         initRecyclerView();
         intiViewModel();
+        //mViewModel.insertTestData();
     }
 
     /**
@@ -83,7 +88,18 @@ public class ListFragment extends Fragment {
         mViewModel.getMedList().observe(this, new Observer<List<Medicine>>() {
             @Override
             public void onChanged(@Nullable List<Medicine> medicines) {
-                mAdapter.updateData(medicines);
+                if (medicines == null || medicines.isEmpty()) {
+                    mNoMedsTv.setVisibility(View.VISIBLE);
+                    mMedListRv.setVisibility(View.GONE);
+                } else {
+                    // The list is not empty. If the 'no meds' text view is visible, hide it.
+                    if (mNoMedsTv.getVisibility() == View.VISIBLE) {
+                        mMedListRv.setVisibility(View.VISIBLE);
+                        mNoMedsTv.setVisibility(View.GONE);
+                    }
+                    mAdapter.updateData(medicines);
+                }
+
             }
         });
     }

@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">MedTrack</string>
+    <string name="no_meds_entered">No medications entered</string>
+    <string name="new_medication">New Medication</string>
+
+    <!-- BEGIN STRINGS FOR AddMedicationFragment -->
+    <!-- Hints for the EditText views -->
+    <string name="add_med_name">Medication Name</string>
+    <string name="add_med_dosage">Dosage (ex. 5 MG)</string>
+    <string name="add_med_instructions">Instructions</string>
+
+    <!-- used to form a 'sentence' with the Spinners -->
+    <string name="times">time(s)</string>
+
+    <!-- used on the add_medication_button -->
+    <string name="add_medication_btn_text">Add</string>
+
+    <!-- Array for num_doses_spinner -->
+    <string-array name="num_doses">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <!-- Array for dose_interval_spinner -->
+    <string-array name="dose_interval">
+        <item>Hourly</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Bi-weekly</item>
+        <item>Monthly</item>
+    </string-array>
+    <!-- END STRINGS FOR AddMedicationFragment -->
 </resources>

@@ -1,4 +1,8 @@
-package com.billcombsdevelopment.medtrack.ui.list;
+/*
+ * Copyright (c) 2018 - Bill Combs
+ */
+
+package com.billcombsdevelopment.medtrack.ui.viewmodels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -23,12 +27,23 @@ public class ListViewModel extends AndroidViewModel {
     /**
      * Checks to see if the list is null, if it is, instantiate it and
      *
-     * @return LiveData<List   <   Medicine>> The list of medications currently in the database
+     * @return LiveData<List       <       Medicine>> The list of medications currently in the database
      */
     public LiveData<List<Medicine>> getMedList() {
         if (medList == null) {
+            medList = new MutableLiveData<>();
             medList = medRepo.getMedList();
         }
         return medList;
+    }
+
+    public void insertTestData() {
+        Medicine testMed = new Medicine("Meloxicam", "15 mg",
+                "Take one tablet by mouth every day", 1, "Daily");
+        medRepo.insertTestData(testMed);
+        Medicine secondMed = new Medicine("Meclizine", "25 MG",
+                "Take 1 tablet by mouth 3 times daily as needed for dizziness.",
+                3, "Daily");
+        medRepo.insertTestData(secondMed);
     }
 }
