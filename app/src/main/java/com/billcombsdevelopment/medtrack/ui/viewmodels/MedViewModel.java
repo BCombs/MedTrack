@@ -8,18 +8,19 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.os.AsyncTask;
 
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.repository.MedRepository;
 
 import java.util.List;
 
-public class ListViewModel extends AndroidViewModel {
+public class MedViewModel extends AndroidViewModel {
 
     private LiveData<List<Medicine>> medList;
     private MedRepository medRepo;
 
-    public ListViewModel(Application application) {
+    public MedViewModel(Application application) {
         super(application);
         medRepo = new MedRepository(getApplication());
     }
@@ -27,7 +28,7 @@ public class ListViewModel extends AndroidViewModel {
     /**
      * Checks to see if the list is null, if it is, instantiate it and
      *
-     * @return LiveData<List       <       Medicine>> The list of medications currently in the database
+     * @return LiveData<List < Medicine>> medList - The list of medications currently in the database
      */
     public LiveData<List<Medicine>> getMedList() {
         if (medList == null) {
@@ -37,13 +38,22 @@ public class ListViewModel extends AndroidViewModel {
         return medList;
     }
 
-    public void insertTestData() {
-        Medicine testMed = new Medicine("Meloxicam", "15 mg",
-                "Take one tablet by mouth every day", 1, "Daily");
-        medRepo.insertTestData(testMed);
-        Medicine secondMed = new Medicine("Meclizine", "25 MG",
-                "Take 1 tablet by mouth 3 times daily as needed for dizziness.",
-                3, "Daily");
-        medRepo.insertTestData(secondMed);
+    public void insertMedication(Medicine med) {
+        new AddMedAsyncTask(medRepo).execute(med);
+    }
+
+    private static class AddMedAsyncTask extends AsyncTask<Medicine, Void, Void> {
+
+        private MedRepository mMedRepo;
+
+        AddMedAsyncTask(MedRepository repo) {
+            mMedRepo = repo;
+        }
+
+        @Override
+        protected Void doInBackground(Medicine... medicines) {
+            mMedRepo.insertMedication(medicines[0]);
+            return null;
+        }
     }
 }

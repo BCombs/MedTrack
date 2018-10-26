@@ -5,7 +5,11 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,7 +20,7 @@ import android.widget.TextView;
 import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.ui.adapters.MedListRecyclerViewAdapter;
-import com.billcombsdevelopment.medtrack.ui.viewmodels.ListViewModel;
+import com.billcombsdevelopment.medtrack.ui.viewmodels.MedViewModel;
 
 import java.util.List;
 
@@ -29,7 +33,9 @@ public class MedListFragment extends Fragment {
     RecyclerView mMedListRv;
     @BindView(R.id.no_meds_tv)
     TextView mNoMedsTv;
-    private ListViewModel mViewModel;
+    @BindView(R.id.list_fab)
+    FloatingActionButton mAddMedFab;
+    private MedViewModel mViewModel;
     private MedListRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -59,15 +65,33 @@ public class MedListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
         initRecyclerView();
         intiViewModel();
-        //mViewModel.insertTestData();
+
+        mAddMedFab.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                AddMedicationFragment addMedFragment = new AddMedicationFragment();
+                transaction.addToBackStack("list");
+                transaction.replace(R.id.container, addMedFragment).commit();
+            }
+        });
     }
 
     /**
      * Initializes the RecyclerView, LayoutManager, and Adapter
      */
     private void initRecyclerView() {
+
+        // Customized the divider
+        DividerItemDecoration divider = new DividerItemDecoration(getActivity(),
+                LinearLayoutManager.VERTICAL);
+        divider.setDrawable(getActivity().getResources().getDrawable(R.drawable.divider));
+        mMedListRv.addItemDecoration(divider);
 
         mMedListRv.setHasFixedSize(true);
         // Set up the LayoutManager
@@ -84,7 +108,7 @@ public class MedListFragment extends Fragment {
      */
     private void intiViewModel() {
 
-        mViewModel = ViewModelProviders.of(this).get(ListViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
         mViewModel.getMedList().observe(this, new Observer<List<Medicine>>() {
             @Override
             public void onChanged(@Nullable List<Medicine> medicines) {

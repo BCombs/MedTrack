@@ -23,7 +23,7 @@ public class MedRepository {
         return mDb.medDao().getAll();
     }
 
-    public void insertTestData(Medicine medicine) {
+    public void insertMedication(Medicine medicine) {
         mDb.medDao().insertMedicine(medicine);
     }
 

@@ -1,153 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2018 - Bill Combs
-  -->
+~ Copyright (c) 2018 - Bill Combs
+-->
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
-    tools:context=".ui.AddMedicationFragment">
+    android:fillViewport="true"
+    android:isScrollContainer="false">
 
-    <LinearLayout
-        android:id="@+id/header_linearlayout"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/barrier"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:padding="20dp"
-            android:src="@drawable/ic_pills" />
-
-        <TextView
-            android:id="@+id/new_medication_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/new_medication"
-            android:textColor="@color/colorMainText"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-    <android.support.constraint.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="header_linearlayout" />
-
-
-    <LinearLayout
-        android:id="@+id/input_fields_linearlayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barrier">
+        tools:context=".ui.AddMedicationFragment">
 
         <LinearLayout
-            android:id="@+id/edit_texts_linearlayout"
-            android:layout_width="256dp"
+            android:id="@+id/header_linearlayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/barrier">
+            app:layout_constraintBottom_toTopOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/med_name_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/add_med_name"
-                android:textColor="@color/colorMainText"
-                android:textColorHint="@color/colorTextHint" />
-
-            <EditText
-                android:id="@+id/med_dose_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/add_med_dosage"
-                android:textColor="@color/colorMainText"
-                android:textColorHint="@color/colorTextHint" />
-
-            <EditText
-                android:id="@+id/med_instructions_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/add_med_instructions"
-                android:textColor="@color/colorMainText"
-                android:textColorHint="@color/colorTextHint" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/spinner_linear_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="8dp"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/num_doses_spinner"
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/num_doses" />
+
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:padding="20dp"
+                android:src="@drawable/ic_pills" />
 
             <TextView
+                android:id="@+id/new_medication_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:text="@string/times"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/new_medication"
                 android:textColor="@color/colorMainText"
-                android:textSize="18sp" />
-
-            <Spinner
-                android:id="@+id/dose_interval_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_weight="1"
-                android:entries="@array/dose_interval" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
+        <android.support.constraint.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="header_linearlayout" />
 
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/add_medication_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/capsule_btn"
-        android:padding="10dp"
-        android:text="@string/add_medication_btn_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:id="@+id/input_fields_linearlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrier">
 
-</android.support.constraint.ConstraintLayout>
+            <LinearLayout
+                android:id="@+id/edit_texts_linearlayout"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/barrier">
+
+                <EditText
+                    android:id="@+id/med_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_med_name"
+                    android:textColor="@color/colorMainText"
+                    android:textColorHint="@color/colorTextHint" />
+
+                <EditText
+                    android:id="@+id/med_dose_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_med_dosage"
+                    android:textColor="@color/colorMainText"
+                    android:textColorHint="@color/colorTextHint" />
+
+                <EditText
+                    android:id="@+id/med_instructions_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_med_instructions"
+                    android:textColor="@color/colorMainText"
+                    android:textColorHint="@color/colorTextHint" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/spinner_linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/num_doses_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/num_doses" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/times"
+                    android:textColor="@color/colorMainText"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/dose_interval_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:entries="@array/dose_interval" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/add_medication_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/capsule_btn"
+            android:padding="10dp"
+            android:text="@string/add_medication_btn_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
+
+
