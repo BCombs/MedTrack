@@ -38,7 +38,9 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
             android:src="@drawable/ic_fabplus"
-            app:fabSize="auto" />
+            app:backgroundTint="@color/colorAccent"
+            app:elevation="12dp"
+            app:fabSize="normal" />
 
     </android.support.design.widget.CoordinatorLayout>
 

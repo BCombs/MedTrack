@@ -8,7 +8,6 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.os.AsyncTask;
 
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.repository.MedRepository;
@@ -28,7 +27,7 @@ public class MedViewModel extends AndroidViewModel {
     /**
      * Checks to see if the list is null, if it is, instantiate it and
      *
-     * @return LiveData<List   <   Medicine>> medList - The list of medications currently in the database
+     * @return LiveData<List       <       Medicine>> medList - The list of medications currently in the database
      */
     public LiveData<List<Medicine>> getMedList() {
         if (medList == null) {
@@ -38,27 +37,32 @@ public class MedViewModel extends AndroidViewModel {
         return medList;
     }
 
+    /**
+     * Return a specific medication stored in the medList
+     *
+     * @param position - position of the medication in the list
+     * @return - The medicine object at the position in the list
+     */
     public Medicine getMedicine(int position) {
         Medicine medicine = medList.getValue().get(position);
         return medicine;
     }
 
+    /**
+     * Call the repository to insert medication to database
+     *
+     * @param med - the medication to be added
+     */
     public void insertMedication(Medicine med) {
-        new AddMedAsyncTask(medRepo).execute(med);
+        medRepo.insertMedication(med);
     }
 
-    private static class AddMedAsyncTask extends AsyncTask<Medicine, Void, Void> {
-
-        private MedRepository mMedRepo;
-
-        AddMedAsyncTask(MedRepository repo) {
-            mMedRepo = repo;
-        }
-
-        @Override
-        protected Void doInBackground(Medicine... medicines) {
-            mMedRepo.insertMedication(medicines[0]);
-            return null;
-        }
+    /**
+     * Call to repository to update medication in database
+     *
+     * @param med - medication to be updated
+     */
+    public void updateMedicine(Medicine med) {
+        medRepo.updateMedication(med);
     }
 }
