@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">MedTrack</string>
     <string name="no_meds_entered">No medications entered</string>
-    <string name="new_medication">New Medication</string>
 
     <!-- BEGIN STRINGS FOR AddMedicationFragment -->
     <!-- Hints for the EditText views -->
+    <string name="new_medication">New Medication</string>
     <string name="add_med_name">Medication Name</string>
     <string name="add_med_dosage">Dosage (ex. 5 MG)</string>
     <string name="add_med_instructions">Instructions</string>
@@ -14,6 +14,8 @@
 
     <!-- used on the add_medication_button -->
     <string name="add_medication_btn_text">Add</string>
+
+    <string name="add_success">%s added!</string>
 
     <!-- Array for num_doses_spinner -->
     <string-array name="num_doses">
@@ -43,5 +45,12 @@
     <string name="med_detail_directions">Directions</string>
     <string name="med_detail_reminders">Reminders</string>
     <string name="error_loading_details">Error loading medication information.</string>
+    <string name="edit_btn_text">Edit</string>
     <!-- END STRINGS FOR MedDetailFragment -->
+
+    <!-- BEGIN STRINGS FOR UpdateMedicineFragment -->
+    <string name="update_medication">Update Medication</string>
+    <string name="update_btn_text">Update</string>
+    <string name="update_success">%s updated!</string>
+    <!-- END STRINGS FOR UpdateMedicineFragment -->
 </resources>

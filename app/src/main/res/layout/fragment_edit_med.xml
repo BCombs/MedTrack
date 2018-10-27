@@ -18,7 +18,7 @@
         tools:context=".ui.AddMedicationFragment">
 
         <LinearLayout
-            android:id="@+id/header_linearlayout"
+            android:id="@+id/update_header_linearlayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -39,13 +39,13 @@
                 android:src="@drawable/ic_pills" />
 
             <TextView
-                android:id="@+id/new_medication_tv"
+                android:id="@+id/update_medication_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/new_medication"
+                android:text="@string/update_medication"
                 android:textColor="@color/colorMainText"
                 android:textSize="20sp" />
 
@@ -60,7 +60,7 @@
 
 
         <LinearLayout
-            android:id="@+id/input_fields_linearlayout"
+            android:id="@+id/ud_input_fields_linearlayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -70,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@+id/barrier">
 
             <LinearLayout
-                android:id="@+id/edit_texts_linearlayout"
+                android:id="@+id/ud_edit_texts_linearlayout"
                 android:layout_width="256dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -78,33 +78,30 @@
                 app:layout_constraintTop_toBottomOf="@id/barrier">
 
                 <EditText
-                    android:id="@+id/med_name_et"
+                    android:id="@+id/ud_med_name_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/add_med_name"
                     android:textColor="@color/colorMainText"
                     android:textColorHint="@color/colorTextHint" />
 
                 <EditText
-                    android:id="@+id/med_dose_et"
+                    android:id="@+id/ud_med_dose_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/add_med_dosage"
                     android:textColor="@color/colorMainText"
                     android:textColorHint="@color/colorTextHint" />
 
                 <EditText
-                    android:id="@+id/med_instructions_et"
+                    android:id="@+id/ud_med_instructions_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/add_med_instructions"
                     android:textColor="@color/colorMainText"
                     android:textColorHint="@color/colorTextHint" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/spinner_linear_layout"
+                android:id="@+id/ud_spinner_linear_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -113,7 +110,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/num_doses_spinner"
+                    android:id="@+id/ud_num_doses_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -130,7 +127,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/dose_interval_spinner"
+                    android:id="@+id/ud_dose_interval_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_weight="1"
@@ -141,7 +138,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/add_medication_btn"
+            android:id="@+id/update_medication_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -150,7 +147,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/capsule_btn"
             android:padding="10dp"
-            android:text="@string/add_medication_btn_text"
+            android:text="@string/update_btn_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

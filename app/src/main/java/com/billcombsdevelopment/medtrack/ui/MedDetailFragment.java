@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +37,8 @@ public class MedDetailFragment extends Fragment {
     TextView mMedDoseTv;
     @BindView(R.id.med_directions_detail_content_tv)
     TextView mMedDirectionsTv;
+    @BindView(R.id.edit_btn)
+    Button mEditBtn;
 
     private MedViewModel mViewModel;
     private Medicine mMedicine;
@@ -65,6 +70,21 @@ public class MedDetailFragment extends Fragment {
         }
 
         displayMedDetails();
+
+        mEditBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle args = new Bundle();
+                args.putInt("position", mPosition);
+                EditMedFragment editMedFragment = new EditMedFragment();
+                editMedFragment.setArguments(args);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.addToBackStack("medDetail");
+                transaction.replace(R.id.container, editMedFragment).commit();
+            }
+        });
     }
 
     private void displayMedDetails() {

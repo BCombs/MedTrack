@@ -91,6 +91,13 @@ public class AddMedicationFragment extends Fragment {
 
                     Medicine medicine = parseMedData();
                     mMedViewModel.insertMedication(medicine);
+
+                    // Alert the user it was added
+                    String added = getResources().getString(R.string.add_success, medicine.getName());
+                    Toast.makeText(getActivity(), added, Toast.LENGTH_SHORT).show();
+
+                    // Close the fragment
+                    getActivity().getSupportFragmentManager().popBackStackImmediate();
                 }
             }
         });
