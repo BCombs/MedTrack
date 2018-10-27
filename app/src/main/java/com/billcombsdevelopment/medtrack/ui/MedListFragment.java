@@ -73,8 +73,8 @@ public class MedListFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
                 AddMedicationFragment addMedFragment = new AddMedicationFragment();
                 transaction.addToBackStack("list");
                 transaction.replace(R.id.container, addMedFragment).commit();
@@ -99,7 +99,22 @@ public class MedListFragment extends Fragment {
         mMedListRv.setLayoutManager(mLayoutManager);
 
         // Set up the Adapter
-        mAdapter = new MedListRecyclerViewAdapter();
+        mAdapter = new MedListRecyclerViewAdapter(new ClickCallback() {
+            @Override
+            public void onClick(int position) {
+                //pass the position to the med detail fragment
+                Bundle args = new Bundle();
+                args.putInt("position", position);
+
+                // Replace the fragment with detail fragment passing it the position
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                MedDetailFragment detailFragment = new MedDetailFragment();
+                detailFragment.setArguments(args);
+                transaction.addToBackStack("list");
+                transaction.replace(R.id.container, detailFragment).commit();
+            }
+        });
         mMedListRv.setAdapter(mAdapter);
     }
 
@@ -126,5 +141,9 @@ public class MedListFragment extends Fragment {
 
             }
         });
+    }
+
+    public interface ClickCallback {
+        void onClick(int position);
     }
 }

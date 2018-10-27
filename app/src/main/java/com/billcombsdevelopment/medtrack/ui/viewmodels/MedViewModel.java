@@ -28,7 +28,7 @@ public class MedViewModel extends AndroidViewModel {
     /**
      * Checks to see if the list is null, if it is, instantiate it and
      *
-     * @return LiveData<List < Medicine>> medList - The list of medications currently in the database
+     * @return LiveData<List   <   Medicine>> medList - The list of medications currently in the database
      */
     public LiveData<List<Medicine>> getMedList() {
         if (medList == null) {
@@ -36,6 +36,11 @@ public class MedViewModel extends AndroidViewModel {
             medList = medRepo.getMedList();
         }
         return medList;
+    }
+
+    public Medicine getMedicine(int position) {
+        Medicine medicine = medList.getValue().get(position);
+        return medicine;
     }
 
     public void insertMedication(Medicine med) {

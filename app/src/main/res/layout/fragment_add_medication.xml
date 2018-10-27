@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:id="@+id/header_linearlayout"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/barrier"
@@ -62,7 +62,7 @@
 
         <LinearLayout
             android:id="@+id/input_fields_linearlayout"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:orientation="vertical"

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
+import com.billcombsdevelopment.medtrack.ui.MedListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +24,12 @@ import butterknife.ButterKnife;
 public class MedListRecyclerViewAdapter extends
         RecyclerView.Adapter<MedListRecyclerViewAdapter.ViewHolder> {
 
+    MedListFragment.ClickCallback mCallback;
     private List<Medicine> mMedList;
 
-    public MedListRecyclerViewAdapter() {
+    public MedListRecyclerViewAdapter(MedListFragment.ClickCallback callback) {
         mMedList = new ArrayList();
+        mCallback = callback;
     }
 
     @NonNull
@@ -65,11 +68,18 @@ public class MedListRecyclerViewAdapter extends
             ButterKnife.bind(this, itemView);
         }
 
-        public void bind(int position, Medicine medicine) {
+        public void bind(final int position, Medicine medicine) {
             medNameTv.setText(medicine.getName());
 
             String dosage = medicine.getDose() + " " + medicine.getDosageInterval();
             medDosageTv.setText(dosage);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCallback.onClick(position);
+                }
+            });
         }
     }
 }

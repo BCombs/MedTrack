@@ -37,8 +37,11 @@
         <item>Bi-weekly</item>
         <item>Monthly</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- END STRINGS FOR AddMedicationFragment -->
+
+    <!-- BEGIN STRINGS FOR MedDetailFragment -->
+    <string name="med_detail_directions">Directions</string>
+    <string name="med_detail_reminders">Reminders</string>
+    <string name="error_loading_details">Error loading medication information.</string>
+    <!-- END STRINGS FOR MedDetailFragment -->
 </resources>
