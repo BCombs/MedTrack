@@ -26,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A {@link Fragment} subclass for editing an already existing medication.
  */
 public class EditMedFragment extends Fragment {
 
@@ -89,7 +89,7 @@ public class EditMedFragment extends Fragment {
                 int doseIntervalPos = mNumDosesSpinner.getSelectedItemPosition();
                 String[] values = getResources().getStringArray(R.array.num_doses);
 
-                // Update the frequncy and intervals of the med
+                // Update the frequency and intervals of the med
                 mMedicine.setFrequency(Integer.valueOf(values[doseIntervalPos]));
                 mMedicine.setDosageInterval(mDoseIntervalSpinner.getSelectedItem().toString());
 
@@ -112,11 +112,11 @@ public class EditMedFragment extends Fragment {
         mDirectionsEt.setText(mMedicine.getDirections());
 
         mNumDosesSpinner.setSelection(mMedicine.getFrequency() - 1);
-        int intervalSpinnerPos = getSpinnerPos();
+        int intervalSpinnerPos = getDoseSpinnerPos();
         mDoseIntervalSpinner.setSelection(intervalSpinnerPos);
     }
 
-    private int getSpinnerPos() {
+    private int getDoseSpinnerPos() {
         switch (mMedicine.getDosageInterval()) {
             case "Hourly":
                 return 0;
