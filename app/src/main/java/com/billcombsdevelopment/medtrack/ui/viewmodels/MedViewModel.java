@@ -62,7 +62,11 @@ public class MedViewModel extends AndroidViewModel {
      *
      * @param med - medication to be updated
      */
-    public void updateMedicine(Medicine med) {
+    public void updateMedication(Medicine med) {
         medRepo.updateMedication(med);
+    }
+
+    public void deleteMedication(int id) {
+        medRepo.deleteMedication(id);
     }
 }

@@ -46,11 +46,15 @@
     <string name="med_detail_reminders">Reminders</string>
     <string name="error_loading_details">Error loading medication information.</string>
     <string name="edit_btn_text">Edit</string>
+    <string name="delete_btn_text">Delete</string>
+    <string name="confirm_delete_title">Confirm Deletion</string>
+    <string name="confirm_delete_message">Are you sure you want to delete %s? This operation cannot be undone.</string>
+    <string name="delete_success">%s deleted!</string>
     <!-- END STRINGS FOR MedDetailFragment -->
 
-    <!-- BEGIN STRINGS FOR UpdateMedicineFragment -->
+    <!-- BEGIN STRINGS FOR EditMedicineFragment -->
     <string name="update_medication">Update Medication</string>
     <string name="update_btn_text">Update</string>
     <string name="update_success">%s updated!</string>
-    <!-- END STRINGS FOR UpdateMedicineFragment -->
+    <!-- END STRINGS FOR EditMedicineFragment -->
 </resources>

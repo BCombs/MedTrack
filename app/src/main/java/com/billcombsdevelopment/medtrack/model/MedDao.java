@@ -25,8 +25,8 @@ public interface MedDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateMedicine(Medicine medicine);
 
-    @Delete
-    void delete(Medicine medicine);
+    @Query("DELETE FROM medicine WHERE mId = :id ")
+    void delete(int id);
 
     @Query("SELECT * FROM medicine WHERE mId = :id")
     LiveData<Medicine> loadMedById(int id);

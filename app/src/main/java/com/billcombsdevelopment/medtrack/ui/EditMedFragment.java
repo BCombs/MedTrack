@@ -94,7 +94,7 @@ public class EditMedFragment extends Fragment {
                 mMedicine.setDosageInterval(mDoseIntervalSpinner.getSelectedItem().toString());
 
                 // Update the med in database
-                mViewModel.updateMedicine(mMedicine);
+                mViewModel.updateMedication(mMedicine);
 
                 // Alert user medicine was updated
                 String updated = getResources().getString(R.string.update_success, mMedicine.getName());

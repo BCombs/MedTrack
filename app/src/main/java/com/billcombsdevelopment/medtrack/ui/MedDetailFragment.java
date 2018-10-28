@@ -5,7 +5,9 @@
 package com.billcombsdevelopment.medtrack.ui;
 
 
+import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,6 +41,8 @@ public class MedDetailFragment extends Fragment {
     TextView mMedDirectionsTv;
     @BindView(R.id.edit_btn)
     Button mEditBtn;
+    @BindView(R.id.delete_btn)
+    Button mDeleteBtn;
 
     private MedViewModel mViewModel;
     private Medicine mMedicine;
@@ -85,6 +89,42 @@ public class MedDetailFragment extends Fragment {
                 transaction.replace(R.id.container, editMedFragment).commit();
             }
         });
+
+        mDeleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int id = mMedicine.getId();
+
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle(getResources().getString(R.string.confirm_delete_title));
+                String alertMessage = getResources()
+                        .getString(R.string.confirm_delete_message, mMedicine.getName());
+                alertDialog.setMessage(alertMessage);
+                alertDialog.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mViewModel.deleteMedication(id);
+
+                        // Alert the user know the medication was deleted
+                        Toast.makeText(getActivity(),
+                                getResources().getString(R.string.delete_success, mMedicine.getName()),
+                                Toast.LENGTH_SHORT).show();
+
+                        // Remove the fragment since the medication doesn't exist any more
+                        getActivity().getSupportFragmentManager().popBackStackImmediate();
+                    }
+                });
+                alertDialog.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Close and do nothing
+                        dialogInterface.cancel();
+                    }
+                });
+                alertDialog.show();
+            }
+        });
+
     }
 
     private void displayMedDetails() {

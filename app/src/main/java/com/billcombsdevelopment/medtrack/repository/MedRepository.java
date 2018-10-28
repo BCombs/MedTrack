@@ -32,6 +32,10 @@ public class MedRepository {
         new UpdateMedAsyncTask(mDb).execute(medicine);
     }
 
+    public void deleteMedication(int id) {
+        new DeleteMedAsyncTask(mDb).execute(id);
+    }
+
     public LiveData<Medicine> loadMedById(int id) {
         return mDb.medDao().loadMedById(id);
     }
@@ -67,6 +71,21 @@ public class MedRepository {
         @Override
         protected Void doInBackground(Medicine... medicines) {
             mDb.medDao().updateMedicine(medicines[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteMedAsyncTask extends AsyncTask<Integer, Void, Void> {
+
+        private AppDatabase mDb;
+
+        DeleteMedAsyncTask(AppDatabase db) {
+            mDb = db;
+        }
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            mDb.medDao().delete(integers[0]);
             return null;
         }
     }

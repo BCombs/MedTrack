@@ -26,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A {@link Fragment} subclass for adding medication to the database.
  */
 public class AddMedicationFragment extends Fragment {
 
