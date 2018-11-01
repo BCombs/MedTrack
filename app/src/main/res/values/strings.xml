@@ -57,4 +57,9 @@
     <string name="update_btn_text">Update</string>
     <string name="update_success">%s updated!</string>
     <!-- END STRINGS FOR EditMedicineFragment -->
+
+    <!-- BEGIN STRINGS FOR AddAlarmFragment -->
+    <string name="add_alarm_btn_text">Add Alarm</string>
+    <string name="alarm_set">Alarm has been set!</string>
+    <!-- END STRINGS FOR AddAlarmFragment -->
 </resources>

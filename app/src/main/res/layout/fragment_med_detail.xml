@@ -136,6 +136,16 @@
                 android:background="@drawable/capsule_btn"
                 android:text="@string/delete_btn_text" />
 
+            <Button
+                android:id="@+id/detail_add_alarm_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/capsule_btn"
+                android:text="@string/add_alarm_btn_text" />
+
         </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>

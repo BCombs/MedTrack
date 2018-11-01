@@ -43,6 +43,8 @@ public class MedDetailFragment extends Fragment {
     Button mEditBtn;
     @BindView(R.id.delete_btn)
     Button mDeleteBtn;
+    @BindView(R.id.detail_add_alarm_btn)
+    Button mAddAlarmBtn;
 
     private MedViewModel mViewModel;
     private Medicine mMedicine;
@@ -122,6 +124,20 @@ public class MedDetailFragment extends Fragment {
                     }
                 });
                 alertDialog.show();
+            }
+        });
+
+        mAddAlarmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle args = new Bundle();
+                args.putInt("position", mPosition);
+
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                AddAlarmFragment addAlarmFragment = new AddAlarmFragment();
+                transaction.addToBackStack("detail");
+                transaction.replace(R.id.container, addAlarmFragment).commit();
             }
         });
 
