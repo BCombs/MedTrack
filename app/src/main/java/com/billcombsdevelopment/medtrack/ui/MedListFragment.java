@@ -21,6 +21,8 @@ import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.ui.adapters.MedListRecyclerViewAdapter;
 import com.billcombsdevelopment.medtrack.ui.viewmodels.MedViewModel;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.List;
 
@@ -35,6 +37,8 @@ public class MedListFragment extends Fragment {
     TextView mNoMedsTv;
     @BindView(R.id.list_fab)
     FloatingActionButton mAddMedFab;
+    @BindView(R.id.banner_ad)
+    AdView mAdView;
     private MedViewModel mViewModel;
     private MedListRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -52,7 +56,7 @@ public class MedListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.med_list_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_med_list, container, false);
     }
 
     @Override
@@ -68,6 +72,7 @@ public class MedListFragment extends Fragment {
 
         initRecyclerView();
         intiViewModel();
+        loadAd();
 
         mAddMedFab.setOnClickListener(new View.OnClickListener() {
 
@@ -141,6 +146,14 @@ public class MedListFragment extends Fragment {
 
             }
         });
+    }
+
+    /**
+     * Loads an AdMob ad
+     */
+    private void loadAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     public interface ClickCallback {

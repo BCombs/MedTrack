@@ -47,6 +47,7 @@
     <string name="error_loading_details">Error loading medication information.</string>
     <string name="edit_btn_text">Edit</string>
     <string name="delete_btn_text">Delete</string>
+    <string name="add_reminder_btn_text">Add Reminder</string>
     <string name="confirm_delete_title">Confirm Deletion</string>
     <string name="confirm_delete_message">Are you sure you want to delete %s? This operation cannot be undone.</string>
     <string name="delete_success">%s deleted!</string>
@@ -56,10 +57,6 @@
     <string name="update_medication">Update Medication</string>
     <string name="update_btn_text">Update</string>
     <string name="update_success">%s updated!</string>
+    <string name="reminder_text">Time to take %s!</string>
     <!-- END STRINGS FOR EditMedicineFragment -->
-
-    <!-- BEGIN STRINGS FOR AddAlarmFragment -->
-    <string name="add_alarm_btn_text">Add Alarm</string>
-    <string name="alarm_set">Alarm has been set!</string>
-    <!-- END STRINGS FOR AddAlarmFragment -->
 </resources>

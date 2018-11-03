@@ -8,7 +8,9 @@ package com.billcombsdevelopment.medtrack.ui;
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -43,8 +45,8 @@ public class MedDetailFragment extends Fragment {
     Button mEditBtn;
     @BindView(R.id.delete_btn)
     Button mDeleteBtn;
-    @BindView(R.id.detail_add_alarm_btn)
-    Button mAddAlarmBtn;
+    @BindView(R.id.detail_add_reminder_btn)
+    Button mAddReminderBtn;
 
     private MedViewModel mViewModel;
     private Medicine mMedicine;
@@ -127,17 +129,17 @@ public class MedDetailFragment extends Fragment {
             }
         });
 
-        mAddAlarmBtn.setOnClickListener(new View.OnClickListener() {
+        mAddReminderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle args = new Bundle();
-                args.putInt("position", mPosition);
+                Intent intent = new Intent(Intent.ACTION_INSERT)
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.Events.TITLE, mMedicine.getName())
+                        .putExtra(CalendarContract.Events.DESCRIPTION,
+                                getResources()
+                                        .getString(R.string.reminder_text, mMedicine.getName()));
+                startActivity(intent);
 
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
-                AddAlarmFragment addAlarmFragment = new AddAlarmFragment();
-                transaction.addToBackStack("detail");
-                transaction.replace(R.id.container, addAlarmFragment).commit();
             }
         });
 

@@ -137,14 +137,16 @@
                 android:text="@string/delete_btn_text" />
 
             <Button
-                android:id="@+id/detail_add_alarm_btn"
+                android:id="@+id/detail_add_reminder_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/capsule_btn"
-                android:text="@string/add_alarm_btn_text" />
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/add_reminder_btn_text" />
 
         </LinearLayout>
 
