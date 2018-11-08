@@ -15,7 +15,7 @@
         android:layout_weight="1"
         android:gravity="center_vertical|start"
         android:textColor="@color/colorMainText"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/widget_med_dosage_tv"
@@ -24,6 +24,6 @@
         android:layout_weight="1"
         android:gravity="center_vertical|end"
         android:textColor="@color/colorAccent"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 </LinearLayout>

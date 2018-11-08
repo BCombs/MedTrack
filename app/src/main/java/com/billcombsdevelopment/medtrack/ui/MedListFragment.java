@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,6 @@ import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.ui.adapters.MedListRecyclerViewAdapter;
 import com.billcombsdevelopment.medtrack.ui.viewmodels.MedViewModel;
 import com.billcombsdevelopment.medtrack.widget.MedWidgetProvider;
-import com.billcombsdevelopment.medtrack.widget.MedWidgetService;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -139,6 +139,10 @@ public class MedListFragment extends Fragment {
         mViewModel.getMedList().observe(this, new Observer<List<Medicine>>() {
             @Override
             public void onChanged(@Nullable List<Medicine> medicines) {
+
+                // Update the widget
+                updateWidget();
+
                 if (medicines == null || medicines.isEmpty()) {
                     mNoMedsTv.setVisibility(View.VISIBLE);
                     mMedListRv.setVisibility(View.GONE);
@@ -150,12 +154,16 @@ public class MedListFragment extends Fragment {
                     }
                     mAdapter.updateData(medicines);
                 }
-                ComponentName componentName =  new ComponentName(getActivity().getPackageName(),
-                        MedWidgetProvider.class.getName());
-                int[] appWidgetIds = mAppWidgetManager.getAppWidgetIds(componentName);
-                mAppWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list_view);
             }
         });
+    }
+
+    private void updateWidget() {
+        Log.d(" updateWidget", "Inside of updateWidget()");
+        int[] appWidgetIds = AppWidgetManager.getInstance(getActivity()).getAppWidgetIds(
+                new ComponentName(getActivity(), MedWidgetProvider.class));
+        MedWidgetProvider widget = new MedWidgetProvider();
+        widget.onUpdate(getActivity(), mAppWidgetManager, appWidgetIds);
     }
 
     /**

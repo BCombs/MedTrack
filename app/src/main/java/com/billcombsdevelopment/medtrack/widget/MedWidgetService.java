@@ -3,6 +3,7 @@ package com.billcombsdevelopment.medtrack.widget;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -25,12 +26,11 @@ class MedRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     private List<Medicine> mMedList = new ArrayList<>();
     private Context mContext;
     private int mAppWidgetId;
-    private AppDatabase mDb;
 
 
     public MedRemoteViewsFactory(Context context, Intent intent) {
         mContext = context;
-        mDb = AppDatabase.getInstance(context);
+
         mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                 AppWidgetManager.INVALID_APPWIDGET_ID);
     }
@@ -42,8 +42,11 @@ class MedRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     @Override
     public void onDataSetChanged() {
+        Log.d(" onDataSetChanged", "Inside of onDataSetChanged()");
         // Get the new medicine list from the database
-        mMedList = mDb.medDao().getWidgettMedList();
+        AppDatabase db = AppDatabase.getInstance(mContext);
+        mMedList = db.medDao().getWidgettMedList();
+        Log.d(" onDataSetChanged", "medList size: " + mMedList.size());
     }
 
     @Override
