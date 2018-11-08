@@ -17,7 +17,10 @@ import java.util.List;
 @Dao
 public interface MedDao {
     @Query("SELECT * FROM medicine")
-    LiveData<List<Medicine>> getAll();
+    LiveData<List<Medicine>> getMedList();
+
+    @Query("SELECT * FROM medicine")
+    List<Medicine> getWidgettMedList();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertMedicine(Medicine medicine);

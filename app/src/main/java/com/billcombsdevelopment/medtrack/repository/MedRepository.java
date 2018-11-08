@@ -21,7 +21,7 @@ public class MedRepository {
     }
 
     public LiveData<List<Medicine>> getMedList() {
-        return mDb.medDao().getAll();
+        return mDb.medDao().getMedList();
     }
 
     public void insertMedication(Medicine medicine) {

@@ -1,7 +1,9 @@
 package com.billcombsdevelopment.medtrack.ui;
 
+import android.appwidget.AppWidgetManager;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentName;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,6 +23,8 @@ import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.ui.adapters.MedListRecyclerViewAdapter;
 import com.billcombsdevelopment.medtrack.ui.viewmodels.MedViewModel;
+import com.billcombsdevelopment.medtrack.widget.MedWidgetProvider;
+import com.billcombsdevelopment.medtrack.widget.MedWidgetService;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -42,6 +46,7 @@ public class MedListFragment extends Fragment {
     private MedViewModel mViewModel;
     private MedListRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private AppWidgetManager mAppWidgetManager;
 
     public static MedListFragment newInstance() {
         return new MedListFragment();
@@ -69,6 +74,8 @@ public class MedListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        mAppWidgetManager = AppWidgetManager.getInstance(getActivity());
 
         initRecyclerView();
         intiViewModel();
@@ -143,7 +150,10 @@ public class MedListFragment extends Fragment {
                     }
                     mAdapter.updateData(medicines);
                 }
-
+                ComponentName componentName =  new ComponentName(getActivity().getPackageName(),
+                        MedWidgetProvider.class.getName());
+                int[] appWidgetIds = mAppWidgetManager.getAppWidgetIds(componentName);
+                mAppWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.widget_list_view);
             }
         });
     }

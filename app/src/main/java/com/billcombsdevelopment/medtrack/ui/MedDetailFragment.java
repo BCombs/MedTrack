@@ -31,7 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A {@link Fragment} that displays details of the medication the user selected.
  */
 public class MedDetailFragment extends Fragment {
 

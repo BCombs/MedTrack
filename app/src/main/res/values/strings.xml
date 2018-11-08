@@ -59,4 +59,8 @@
     <string name="update_success">%s updated!</string>
     <string name="reminder_text">Time to take %s!</string>
     <!-- END STRINGS FOR EditMedicineFragment -->
+
+    <!-- BEGIN STRINGS FOR MedTrack Widget -->
+    <string name="widget_title">MedTrack - Medication List</string>
+    <!-- END STRINGS FOR MedTrack Widget -->
 </resources>
