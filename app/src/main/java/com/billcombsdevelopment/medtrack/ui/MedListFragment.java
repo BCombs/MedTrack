@@ -95,6 +95,9 @@ public class MedListFragment extends Fragment {
             public void onClick(View view) {
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
+                transaction.setCustomAnimations(android.R.anim.slide_in_left,
+                        android.R.anim.slide_out_right,
+                        android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 AddMedicationFragment addMedFragment = new AddMedicationFragment();
                 transaction.addToBackStack("list");
                 transaction.replace(R.id.container, addMedFragment).commit();
@@ -129,6 +132,8 @@ public class MedListFragment extends Fragment {
                 // Replace the fragment with detail fragment passing it the position
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
+                transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                        android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 MedDetailFragment detailFragment = new MedDetailFragment();
                 detailFragment.setArguments(args);
                 transaction.addToBackStack("list");

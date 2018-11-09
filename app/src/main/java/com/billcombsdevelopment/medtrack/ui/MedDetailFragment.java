@@ -98,6 +98,9 @@ public class MedDetailFragment extends Fragment {
                 editMedFragment.setArguments(args);
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
+                transaction.setCustomAnimations(android.R.anim.slide_in_left,
+                        android.R.anim.slide_out_right,
+                        android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 transaction.addToBackStack("medDetail");
                 transaction.replace(R.id.container, editMedFragment).commit();
             }
@@ -148,10 +151,8 @@ public class MedDetailFragment extends Fragment {
                                 getResources()
                                         .getString(R.string.reminder_text, mMedicine.getName()));
                 startActivity(intent);
-
             }
         });
-
     }
 
     private void displayMedDetails() {
