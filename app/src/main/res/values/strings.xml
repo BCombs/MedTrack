@@ -64,4 +64,11 @@
     <!-- BEGIN STRINGS FOR MedTrack Widget -->
     <string name="widget_title">MedTrack - Medication List</string>
     <!-- END STRINGS FOR MedTrack Widget -->
+
+    <!-- SAMPLE TEXT FOR XML LAYOUTS-->
+    <string name="test_dose">200 MG</string>
+    <string name="test_directions">Take 1 tablet every 4 to 6 hours while pain persists.
+        If pain does not respond to 1 tablet, 2 tablets may be used.
+        Do not exceed 6 tablets in 24 hours.</string>
+    <!-- END SAMPLE TEXT FOR XML LAYOUTS -->
 </resources>

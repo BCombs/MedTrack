@@ -19,17 +19,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10dp"
+            android:padding="@dimen/ten_dp"
             android:text="@string/no_meds_entered"
             android:textColor="@color/colorMainText"
-            android:textSize="24sp"
+            android:textSize="@dimen/twentyfive_sp"
             android:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/medlist_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
+            android:padding="@dimen/ten_dp"
             android:visibility="visible" />
 
         <android.support.design.widget.FloatingActionButton
@@ -37,10 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/fifteen_dp"
             android:src="@drawable/ic_fabplus"
             app:backgroundTint="@color/colorAccent"
-            app:elevation="12dp"
+            app:elevation="@dimen/twelve_dp"
             app:fabSize="normal" />
 
     </android.support.design.widget.CoordinatorLayout>

@@ -4,6 +4,32 @@
   -->
 
 <resources>
-    <dimen name="text_size_small">18sp</dimen>
-    <dimen name="large_40">40dp</dimen>
+    <!-- dp dimens -->
+    <dimen name="zero_dp">0dp</dimen>
+    <dimen name="five_dp">5dp</dimen>
+    <dimen name="eight_dp">8dp</dimen>
+    <dimen name="ten_dp">10dp</dimen>
+    <dimen name="twelve_dp">12dp</dimen>
+    <dimen name="fifteen_dp">15dp</dimen>
+    <dimen name="twenty_dp">20dp</dimen>
+    <dimen name="twentyfive_dp">25dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+    <dimen name="fortyeight_dp">48</dimen>
+
+    <dimen name="edit_text_width">256dp</dimen>
+
+    <!-- sp dimens -->
+    <dimen name="fifteen_sp">15sp</dimen>
+    <dimen name="eighteen_sp">18sp</dimen>
+    <dimen name="twenty_sp">20sp</dimen>
+    <dimen name="twentyfive_sp">25sp</dimen>
+
+    <!-- weights -->
+    <dimen name="weight_one">1</dimen>
+    <dimen name="weight_two">2</dimen>
+
+    <!-- Bias -->
+    <dimen name="zero_bias">0.0</dimen>
+    <dimen name="five_tenths_bias">0.5</dimen>
+    <dimen name="one_bias">1.0</dimen>
 </resources>

@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="@string/widget_title"
         android:textColor="@color/colorMainText"
-        android:textSize="18sp" />
+        android:textSize="@dimen/eighteen_sp" />
 
     <ListView
         android:id="@+id/widget_list_view"
@@ -27,6 +27,6 @@
         android:gravity="center"
         android:text="@string/no_meds_entered"
         android:textColor="@color/colorMainText"
-        android:textSize="18sp" />
+        android:textSize="@dimen/eighteen_sp" />
 
 </LinearLayout>

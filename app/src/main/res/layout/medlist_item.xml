@@ -6,24 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="@dimen/ten_dp">
 
     <TextView
         android:id="@+id/med_name_tv"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero_dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="@dimen/weight_one"
         android:gravity="center_vertical|start"
         android:textColor="@color/colorMainText"
-        android:textSize="24sp" />
+        android:textSize="@dimen/twentyfive_sp" />
 
     <TextView
         android:id="@+id/med_dosage_tv"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero_dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="@dimen/weight_one"
         android:gravity="center_vertical|end"
         android:textColor="@color/colorAccent"
-        android:textSize="16sp" />
+        android:textSize="@dimen/fifteen_sp" />
 
 </LinearLayout>

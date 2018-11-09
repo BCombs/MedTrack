@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:id="@+id/update_header_linearlayout"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/barrier"
@@ -32,10 +32,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:padding="20dp"
+                android:layout_marginStart="@dimen/eight_dp"
+                android:layout_marginTop="@dimen/fifteen_dp"
+                android:layout_marginEnd="@dimen/eight_dp"
+                android:padding="@dimen/twenty_dp"
                 android:src="@drawable/ic_pills" />
 
             <TextView
@@ -43,11 +43,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="@dimen/eight_dp"
+                android:layout_marginEnd="@dimen/eight_dp"
                 android:text="@string/update_medication"
                 android:textColor="@color/colorMainText"
-                android:textSize="20sp" />
+                android:textSize="@dimen/twenty_sp" />
 
         </LinearLayout>
 
@@ -61,9 +61,9 @@
 
         <LinearLayout
             android:id="@+id/ud_input_fields_linearlayout"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/twentyfive_dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,7 @@
 
             <LinearLayout
                 android:id="@+id/ud_edit_texts_linearlayout"
-                android:layout_width="256dp"
+                android:layout_width="@dimen/edit_text_width"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
@@ -105,32 +105,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="@dimen/eight_dp"
+                android:layout_marginTop="@dimen/fifteen_dp"
                 android:orientation="horizontal">
 
                 <Spinner
                     android:id="@+id/ud_num_doses_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="@dimen/weight_one"
                     android:entries="@array/num_doses" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
+                    android:layout_weight="@dimen/weight_one"
+                    android:paddingStart="@dimen/five_dp"
+                    android:paddingEnd="@dimen/five_dp"
                     android:text="@string/times"
                     android:textColor="@color/colorMainText"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/eighteen_sp" />
 
                 <Spinner
                     android:id="@+id/ud_dose_interval_spinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_weight="1"
+                    android:layout_height="@dimen/twentyfive_dp"
+                    android:layout_weight="@dimen/weight_one"
                     android:entries="@array/dose_interval" />
 
             </LinearLayout>
@@ -142,11 +142,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="@dimen/eight_dp"
+            android:layout_marginEnd="@dimen/eight_dp"
+            android:layout_marginBottom="@dimen/fifteen_dp"
             android:background="@drawable/capsule_btn"
-            android:padding="10dp"
+            android:padding="@dimen/ten_dp"
             android:text="@string/update_btn_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
