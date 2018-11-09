@@ -66,7 +66,7 @@
             android:layout_marginEnd="10dp"
             android:text="@string/med_detail_directions"
             android:textColor="@color/colorAccent"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -81,28 +81,12 @@
             android:layout_marginEnd="8dp"
             android:padding="10dp"
             android:textColor="@color/colorMainText"
-            android:textSize="14sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/med_detail_directions_title_tv"
             tools:text="Take 1 tablet every 4 to 6 hours while pain persists. If pain does not respond to 1 tablet, 2 tablets may be used. Do not exceed 6 tablets in 24 hours." />
-
-        <TextView
-            android:id="@+id/med_detail_reminders_title_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/med_detail_reminders"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/med_directions_detail_content_tv" />
 
         <LinearLayout
             android:layout_width="wrap_content"
