@@ -43,7 +43,6 @@
 
     <!-- BEGIN STRINGS FOR MedDetailFragment -->
     <string name="med_detail_directions">Directions</string>
-    <string name="med_detail_reminders">Reminders</string>
     <string name="error_loading_details">Error loading medication information.</string>
     <string name="edit_btn_text">Edit</string>
     <string name="delete_btn_text">Delete</string>
@@ -71,4 +70,8 @@
         If pain does not respond to 1 tablet, 2 tablets may be used.
         Do not exceed 6 tablets in 24 hours.</string>
     <!-- END SAMPLE TEXT FOR XML LAYOUTS -->
+
+    <!-- CONTENT DESCRIPTIONS -->
+    <string name="pill_bottle_content_description">This is an image of a pill bottle.</string>
+    <!-- END CONTENT DESCRIPTIONS -->
 </resources>

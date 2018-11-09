@@ -26,7 +26,6 @@
 
     <!-- weights -->
     <dimen name="weight_one">1</dimen>
-    <dimen name="weight_two">2</dimen>
 
     <!-- Bias -->
     <dimen name="zero_bias">0.0</dimen>

@@ -54,7 +54,7 @@ public class EditMedFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edit_med, container, false);
@@ -65,7 +65,9 @@ public class EditMedFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
+        if (getActivity() != null) {
+            mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
+        }
 
         if (getArguments() != null && getArguments().containsKey("position")) {
             int position = getArguments().getInt("position");
@@ -85,8 +87,10 @@ public class EditMedFragment extends Fragment {
                     + getResources().getString(R.string.edit_appbar_title)
                     + " "
                     + mMedicine.getName();
-            ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-            actionBar.setTitle(title);
+            if(((MainActivity) getActivity()).getSupportActionBar() != null) {
+                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle(title);
+            }
         }
 
         // Update medication when button is clicked

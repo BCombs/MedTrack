@@ -35,6 +35,7 @@
                 android:layout_marginStart="@dimen/eight_dp"
                 android:layout_marginTop="@dimen/fifteen_dp"
                 android:layout_marginEnd="@dimen/eight_dp"
+                android:contentDescription="@string/pill_bottle_content_description"
                 android:padding="@dimen/twenty_dp"
                 android:src="@drawable/ic_pills" />
 
@@ -82,6 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/add_med_name"
+                    android:inputType="textShortMessage"
                     android:textColor="@color/colorMainText"
                     android:textColorHint="@color/colorTextHint" />
 
@@ -90,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/add_med_dosage"
+                    android:inputType="textShortMessage"
                     android:textColor="@color/colorMainText"
                     android:textColorHint="@color/colorTextHint" />
 
@@ -98,6 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/add_med_instructions"
+                    android:inputType="textShortMessage"
                     android:textColor="@color/colorMainText"
                     android:textColorHint="@color/colorTextHint" />
 

@@ -61,7 +61,7 @@ public class MedDetailFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_med_detail, container, false);
@@ -72,7 +72,9 @@ public class MedDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
+        if (getActivity() != null) {
+            mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
+        }
 
         if (getArguments() != null && getArguments().containsKey("position")) {
             mPosition = getArguments().getInt("position");
@@ -82,8 +84,10 @@ public class MedDetailFragment extends Fragment {
         // Set the app bar title
         if (mMedicine != null) {
             String title = getResources().getString(R.string.app_name) + " - " + mMedicine.getName();
-            ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-            actionBar.setTitle(title);
+            if (((MainActivity) getActivity()).getSupportActionBar() != null) {
+                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle(title);
+            }
         }
 
         displayMedDetails();

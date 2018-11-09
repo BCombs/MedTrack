@@ -16,12 +16,10 @@ public class MedWidgetProvider extends AppWidgetProvider {
         final int N = appWidgetIds.length;
 
         // loop through each widget the user has placed
-        for (int i = 0; i < N; i++) {
-            int appWidgetId = appWidgetIds[i];
-
+        for (int appWidgetId : appWidgetIds) {
             // Intent for service
             Intent intent = new Intent(context, MedWidgetService.class);
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
 
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.med_widget_layout);

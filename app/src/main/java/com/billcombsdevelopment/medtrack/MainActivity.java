@@ -40,12 +40,16 @@ public class MainActivity extends AppCompatActivity {
                 int stackCount = getSupportFragmentManager().getBackStackEntryCount();
                 if (stackCount > 0) {
                     // Up button needs to be displayed
-                    getSupportActionBar().setHomeButtonEnabled(true);
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    if (getSupportActionBar() != null) {
+                        getSupportActionBar().setHomeButtonEnabled(true);
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    }
                 } else {
                     // Don't display up button
-                    getSupportActionBar().setHomeButtonEnabled(false);
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    if (getSupportActionBar() != null) {
+                        getSupportActionBar().setHomeButtonEnabled(false);
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    }
                 }
             }
         });

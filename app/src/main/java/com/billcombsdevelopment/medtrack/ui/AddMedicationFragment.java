@@ -68,7 +68,7 @@ public class AddMedicationFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_medication, container, false);
@@ -83,11 +83,16 @@ public class AddMedicationFragment extends Fragment {
         if (getActivity() != null) {
             String title = getResources().getString(R.string.app_name) + " - " +
                     getResources().getString(R.string.new_medication);
-            ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-            actionBar.setTitle(title);
+            if(((MainActivity) getActivity()).getSupportActionBar() != null) {
+                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle(title);
+            }
         }
 
-        mMedViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
+        if(getActivity() != null) {
+            mMedViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
+        }
+
 
         mAddMedButton.setOnClickListener(new View.OnClickListener() {
             @Override

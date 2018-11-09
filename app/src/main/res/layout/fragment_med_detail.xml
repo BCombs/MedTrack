@@ -11,7 +11,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark">
 
         <ImageView
@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/fortyeight_dp"
             android:layout_marginTop="@dimen/twentyfive_dp"
+            android:contentDescription="@string/pill_bottle_content_description"
             android:src="@drawable/ic_pills"
             app:layout_constraintEnd_toStartOf="@+id/med_detail_name_tv"
             app:layout_constraintHorizontal_bias="@dimen/five_tenths_bias"

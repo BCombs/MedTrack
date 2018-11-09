@@ -44,8 +44,7 @@ public class MedViewModel extends AndroidViewModel {
      * @return - The medicine object at the position in the list
      */
     public Medicine getMedicine(int position) {
-        Medicine medicine = medList.getValue().get(position);
-        return medicine;
+        return medList.getValue().get(position);
     }
 
     /**

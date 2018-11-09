@@ -53,22 +53,11 @@ public class MedListFragment extends Fragment {
         return new MedListFragment();
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_med_list, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
     }
 
     @Override
@@ -85,8 +74,10 @@ public class MedListFragment extends Fragment {
         // Set the app bar title
         if (getActivity() != null) {
             String title = getResources().getString(R.string.app_name);
-            ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-            actionBar.setTitle(title);
+            if (((MainActivity) getActivity()).getSupportActionBar() != null) {
+                ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+                actionBar.setTitle(title);
+            }
         }
 
         mAddMedFab.setOnClickListener(new View.OnClickListener() {
@@ -111,10 +102,12 @@ public class MedListFragment extends Fragment {
     private void initRecyclerView() {
 
         // Customized the divider
-        DividerItemDecoration divider = new DividerItemDecoration(getActivity(),
-                LinearLayoutManager.VERTICAL);
-        divider.setDrawable(getActivity().getResources().getDrawable(R.drawable.divider));
-        mMedListRv.addItemDecoration(divider);
+        if (getActivity() != null) {
+            DividerItemDecoration divider = new DividerItemDecoration(getActivity(),
+                    LinearLayoutManager.VERTICAL);
+            divider.setDrawable(getActivity().getResources().getDrawable(R.drawable.divider));
+            mMedListRv.addItemDecoration(divider);
+        }
 
         mMedListRv.setHasFixedSize(true);
         // Set up the LayoutManager
@@ -148,7 +141,9 @@ public class MedListFragment extends Fragment {
      */
     private void intiViewModel() {
 
-        mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
+        if(getActivity() != null) {
+            mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
+        }
         mViewModel.getMedList().observe(this, new Observer<List<Medicine>>() {
             @Override
             public void onChanged(@Nullable List<Medicine> medicines) {
