@@ -14,7 +14,7 @@
     <dimen name="twenty_dp">20dp</dimen>
     <dimen name="twentyfive_dp">25dp</dimen>
     <dimen name="forty_dp">40dp</dimen>
-    <dimen name="fortyeight_dp">48</dimen>
+    <dimen name="fortyeight_dp">48dp</dimen>
 
     <dimen name="edit_text_width">256dp</dimen>
 
