@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.billcombsdevelopment.medtrack.MainActivity;
 import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.ui.viewmodels.MedViewModel;
@@ -74,6 +76,17 @@ public class EditMedFragment extends Fragment {
             Toast.makeText(getActivity(),
                     getResources()
                             .getString(R.string.error_loading_details), Toast.LENGTH_SHORT).show();
+        }
+
+
+        // Set the app bar title
+        if (mMedicine != null) {
+            String title = getResources().getString(R.string.app_name) + " - "
+                    + getResources().getString(R.string.edit_appbar_title)
+                    + " "
+                    + mMedicine.getName();
+            ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+            actionBar.setTitle(title);
         }
 
         // Update medication when button is clicked

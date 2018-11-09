@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.billcombsdevelopment.medtrack.MainActivity;
 import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.ui.viewmodels.MedViewModel;
@@ -75,6 +77,13 @@ public class MedDetailFragment extends Fragment {
         if (getArguments() != null && getArguments().containsKey("position")) {
             mPosition = getArguments().getInt("position");
             mMedicine = mViewModel.getMedicine(mPosition);
+        }
+
+        // Set the app bar title
+        if (mMedicine != null) {
+            String title = getResources().getString(R.string.app_name) + " - " + mMedicine.getName();
+            ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+            actionBar.setTitle(title);
         }
 
         displayMedDetails();

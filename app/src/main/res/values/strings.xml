@@ -55,6 +55,7 @@
 
     <!-- BEGIN STRINGS FOR EditMedicineFragment -->
     <string name="update_medication">Update Medication</string>
+    <string name="edit_appbar_title">Edit</string>
     <string name="update_btn_text">Update</string>
     <string name="update_success">%s updated!</string>
     <string name="reminder_text">Time to take %s!</string>

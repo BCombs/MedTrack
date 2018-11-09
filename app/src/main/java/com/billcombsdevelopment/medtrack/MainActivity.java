@@ -1,7 +1,9 @@
 package com.billcombsdevelopment.medtrack;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.billcombsdevelopment.medtrack.ui.MedListFragment;
 import com.google.android.gms.ads.MobileAds;
@@ -30,5 +32,32 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, MedListFragment.newInstance())
                     .commitNow();
         }
+
+        // Determine if the up button needs to be displayed
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                int stackCount = getSupportFragmentManager().getBackStackEntryCount();
+                if (stackCount > 0) {
+                    // Up button needs to be displayed
+                    getSupportActionBar().setHomeButtonEnabled(true);
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                } else {
+                    // Don't display up button
+                    getSupportActionBar().setHomeButtonEnabled(false);
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                }
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getSupportFragmentManager().popBackStack();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

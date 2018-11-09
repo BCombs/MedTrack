@@ -11,15 +11,16 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.billcombsdevelopment.medtrack.MainActivity;
 import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.ui.adapters.MedListRecyclerViewAdapter;
@@ -77,9 +78,16 @@ public class MedListFragment extends Fragment {
 
         mAppWidgetManager = AppWidgetManager.getInstance(getActivity());
 
+        loadAd();
         initRecyclerView();
         intiViewModel();
-        loadAd();
+
+        // Set the app bar title
+        if (getActivity() != null) {
+            String title = getResources().getString(R.string.app_name);
+            ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+            actionBar.setTitle(title);
+        }
 
         mAddMedFab.setOnClickListener(new View.OnClickListener() {
 
@@ -159,7 +167,6 @@ public class MedListFragment extends Fragment {
     }
 
     private void updateWidget() {
-        Log.d(" updateWidget", "Inside of updateWidget()");
         int[] appWidgetIds = AppWidgetManager.getInstance(getActivity()).getAppWidgetIds(
                 new ComponentName(getActivity(), MedWidgetProvider.class));
         MedWidgetProvider widget = new MedWidgetProvider();
