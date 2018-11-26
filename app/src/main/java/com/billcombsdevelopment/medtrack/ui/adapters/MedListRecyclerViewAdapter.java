@@ -62,6 +62,8 @@ public class MedListRecyclerViewAdapter extends
         TextView medNameTv;
         @BindView(R.id.med_dosage_tv)
         TextView medDosageTv;
+        @BindView(R.id.med_directions_tv)
+        TextView medDirectionsTv;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,10 +71,15 @@ public class MedListRecyclerViewAdapter extends
         }
 
         public void bind(final int position, Medicine medicine) {
+
+            // Set the Medicine name
             medNameTv.setText(medicine.getName());
 
-            String dosage = medicine.getDose() + " " + medicine.getDosageInterval();
-            medDosageTv.setText(dosage);
+            // Set the dosage
+            medDosageTv.setText(medicine.getDose());
+
+            // Set the directions
+            medDirectionsTv.setText(medicine.getDirections());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -38,10 +38,6 @@ public class EditMedFragment extends Fragment {
     EditText mDoseEt;
     @BindView(R.id.ud_med_instructions_et)
     EditText mDirectionsEt;
-    @BindView(R.id.ud_num_doses_spinner)
-    Spinner mNumDosesSpinner;
-    @BindView(R.id.ud_dose_interval_spinner)
-    Spinner mDoseIntervalSpinner;
     @BindView(R.id.update_medication_btn)
     Button mUpdateMedBtn;
 
@@ -87,7 +83,7 @@ public class EditMedFragment extends Fragment {
                     + getResources().getString(R.string.edit_appbar_title)
                     + " "
                     + mMedicine.getName();
-            if(((MainActivity) getActivity()).getSupportActionBar() != null) {
+            if (((MainActivity) getActivity()).getSupportActionBar() != null) {
                 ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                 actionBar.setTitle(title);
             }
@@ -101,14 +97,6 @@ public class EditMedFragment extends Fragment {
                 mMedicine.setName(mNameEt.getText().toString());
                 mMedicine.setDose(mDoseEt.getText().toString());
                 mMedicine.setDirections(mDirectionsEt.getText().toString());
-
-                // Get the number of doses selected from the spinner
-                int doseIntervalPos = mNumDosesSpinner.getSelectedItemPosition();
-                String[] values = getResources().getStringArray(R.array.num_doses);
-
-                // Update the frequency and intervals of the med
-                mMedicine.setFrequency(Integer.valueOf(values[doseIntervalPos]));
-                mMedicine.setDosageInterval(mDoseIntervalSpinner.getSelectedItem().toString());
 
                 // Update the med in database
                 mViewModel.updateMedication(mMedicine);
@@ -127,26 +115,5 @@ public class EditMedFragment extends Fragment {
         mNameEt.setText(mMedicine.getName());
         mDoseEt.setText(mMedicine.getDose());
         mDirectionsEt.setText(mMedicine.getDirections());
-
-        mNumDosesSpinner.setSelection(mMedicine.getFrequency() - 1);
-        int intervalSpinnerPos = getDoseSpinnerPos();
-        mDoseIntervalSpinner.setSelection(intervalSpinnerPos);
-    }
-
-    private int getDoseSpinnerPos() {
-        switch (mMedicine.getDosageInterval()) {
-            case "Hourly":
-                return 0;
-            case "Daily":
-                return 1;
-            case "Weekly":
-                return 2;
-            case "Bi-weekly":
-                return 3;
-            case "Monthly":
-                return 4;
-            default:
-                return 0;
-        }
     }
 }

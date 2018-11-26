@@ -76,6 +76,7 @@ public class MedDetailFragment extends Fragment {
             mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
         }
 
+        // Get the position of the medication in the list
         if (getArguments() != null && getArguments().containsKey("position")) {
             mPosition = getArguments().getInt("position");
             mMedicine = mViewModel.getMedicine(mPosition);
@@ -92,6 +93,7 @@ public class MedDetailFragment extends Fragment {
 
         displayMedDetails();
 
+        // Replace with the edit medication fragment
         mEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +112,7 @@ public class MedDetailFragment extends Fragment {
             }
         });
 
+        // Delete medication from the list
         mDeleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,6 +148,7 @@ public class MedDetailFragment extends Fragment {
             }
         });
 
+        // Add a reminder to take medication
         mAddReminderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,6 +163,9 @@ public class MedDetailFragment extends Fragment {
         });
     }
 
+    /**
+     * Parses the medication data to the UI
+     */
     private void displayMedDetails() {
 
         if (mMedicine != null) {

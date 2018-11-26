@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.billcombsdevelopment.medtrack.MainActivity;
@@ -39,19 +38,12 @@ public class AddMedicationFragment extends Fragment {
     @BindView(R.id.med_instructions_et)
     EditText mMedInstructionsEditText;
 
-    @BindView(R.id.num_doses_spinner)
-    Spinner mNumDosesSpinner;
-    @BindView(R.id.dose_interval_spinner)
-    Spinner mDoseIntervalSpinner;
-
     @BindView(R.id.add_medication_btn)
     Button mAddMedButton;
 
     private String mMedName;
     private String mMedDose;
     private String mInstructions;
-    private int mNumDoses;
-    private String mDoseInterval;
     private MedViewModel mMedViewModel;
 
     public AddMedicationFragment() {
@@ -83,13 +75,13 @@ public class AddMedicationFragment extends Fragment {
         if (getActivity() != null) {
             String title = getResources().getString(R.string.app_name) + " - " +
                     getResources().getString(R.string.new_medication);
-            if(((MainActivity) getActivity()).getSupportActionBar() != null) {
+            if (((MainActivity) getActivity()).getSupportActionBar() != null) {
                 ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
                 actionBar.setTitle(title);
             }
         }
 
-        if(getActivity() != null) {
+        if (getActivity() != null) {
             mMedViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
         }
 
@@ -123,14 +115,6 @@ public class AddMedicationFragment extends Fragment {
         mMedDose = mDoseEditText.getText().toString();
         mInstructions = mMedInstructionsEditText.getText().toString();
 
-        // Get the number of doses selected from the spinner
-        int doseIntervalPos = mNumDosesSpinner.getSelectedItemPosition();
-        String[] values = getResources().getStringArray(R.array.num_doses);
-        mNumDoses = Integer.valueOf(values[doseIntervalPos]);
-
-        // Get the dosage interval selected from the spinner
-        mDoseInterval = mDoseIntervalSpinner.getSelectedItem().toString();
-
-        return new Medicine(mMedName, mMedDose, mInstructions, mNumDoses, mDoseInterval);
+        return new Medicine(mMedName, mMedDose, mInstructions);
     }
 }

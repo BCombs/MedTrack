@@ -107,41 +107,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/spinner_linear_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/eight_dp"
-                android:layout_marginTop="@dimen/fifteen_dp"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/num_doses_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="@dimen/weight_one"
-                    android:entries="@array/num_doses" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="@dimen/weight_one"
-                    android:paddingStart="@dimen/five_dp"
-                    android:paddingEnd="@dimen/five_dp"
-                    android:text="@string/times"
-                    android:textColor="@color/colorMainText"
-                    android:textSize="@dimen/eighteen_sp" />
-
-                <Spinner
-                    android:id="@+id/dose_interval_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/twentyfive_dp"
-                    android:layout_weight="@dimen/weight_one"
-                    android:entries="@array/dose_interval" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
         <Button

@@ -1,9 +1,0 @@
-<!--
-  ~ Copyright (c) 2018 - Bill Combs
-  -->
-
-<vector android:height="24dp" android:viewportHeight="469.33334"
-    android:viewportWidth="469.33334" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="#FF000000" android:pathData="m0,224h469.332v21.332h-469.332zM0,224"/>
-    <path android:fillColor="#FF000000" android:pathData="m224,0h21.332v469.332h-21.332zM224,0"/>
-</vector>

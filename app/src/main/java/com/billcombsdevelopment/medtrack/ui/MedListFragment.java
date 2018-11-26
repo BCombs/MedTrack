@@ -3,7 +3,6 @@ package com.billcombsdevelopment.medtrack.ui;
 import android.appwidget.AppWidgetManager;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.ComponentName;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,7 +24,6 @@ import com.billcombsdevelopment.medtrack.R;
 import com.billcombsdevelopment.medtrack.model.Medicine;
 import com.billcombsdevelopment.medtrack.ui.adapters.MedListRecyclerViewAdapter;
 import com.billcombsdevelopment.medtrack.ui.viewmodels.MedViewModel;
-import com.billcombsdevelopment.medtrack.widget.MedWidgetProvider;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -141,15 +139,12 @@ public class MedListFragment extends Fragment {
      */
     private void intiViewModel() {
 
-        if(getActivity() != null) {
+        if (getActivity() != null) {
             mViewModel = ViewModelProviders.of(getActivity()).get(MedViewModel.class);
         }
         mViewModel.getMedList().observe(this, new Observer<List<Medicine>>() {
             @Override
             public void onChanged(@Nullable List<Medicine> medicines) {
-
-                // Update the widget
-                updateWidget();
 
                 if (medicines == null || medicines.isEmpty()) {
                     mNoMedsTv.setVisibility(View.VISIBLE);
@@ -164,13 +159,6 @@ public class MedListFragment extends Fragment {
                 }
             }
         });
-    }
-
-    private void updateWidget() {
-        int[] appWidgetIds = AppWidgetManager.getInstance(getActivity()).getAppWidgetIds(
-                new ComponentName(getActivity(), MedWidgetProvider.class));
-        MedWidgetProvider widget = new MedWidgetProvider();
-        widget.onUpdate(getActivity(), mAppWidgetManager, appWidgetIds);
     }
 
     /**

@@ -21,17 +21,11 @@ public class Medicine implements Parcelable {
     private String mDose;
     @ColumnInfo(name = "directions")
     private String mDirections;
-    @ColumnInfo(name = "frequency")
-    private int mFrequency;
-    @ColumnInfo(name = "dosage_interval")
-    private String mDosageInterval;
 
-    public Medicine(String name, String dose, String directions, int frequency, String dosageInterval) {
+    public Medicine(String name, String dose, String directions) {
         mName = name;
         mDose = dose;
         mDirections = directions;
-        mFrequency = frequency;
-        mDosageInterval = dosageInterval;
     }
 
     public int getId() {
@@ -66,22 +60,6 @@ public class Medicine implements Parcelable {
         this.mDirections = mDirections;
     }
 
-    public int getFrequency() {
-        return mFrequency;
-    }
-
-    public void setFrequency(int frequency) {
-        this.mFrequency = frequency;
-    }
-
-    public String getDosageInterval() {
-        return mDosageInterval;
-    }
-
-    public void setDosageInterval(String mDosageInterval) {
-        this.mDosageInterval = mDosageInterval;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -93,8 +71,6 @@ public class Medicine implements Parcelable {
         dest.writeString(this.mName);
         dest.writeString(this.mDose);
         dest.writeString(this.mDirections);
-        dest.writeInt(this.mFrequency);
-        dest.writeString(this.mDosageInterval);
     }
 
     protected Medicine(Parcel in) {
@@ -102,8 +78,6 @@ public class Medicine implements Parcelable {
         this.mName = in.readString();
         this.mDose = in.readString();
         this.mDirections = in.readString();
-        this.mFrequency = in.readInt();
-        this.mDosageInterval = in.readString();
     }
 
     public static final Parcelable.Creator<Medicine> CREATOR = new Parcelable.Creator<Medicine>() {
