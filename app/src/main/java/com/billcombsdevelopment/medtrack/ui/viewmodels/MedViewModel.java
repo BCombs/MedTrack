@@ -8,8 +8,11 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.billcombsdevelopment.medtrack.model.Medicine;
+import com.billcombsdevelopment.medtrack.model.User;
 import com.billcombsdevelopment.medtrack.repository.MedRepository;
 
 import java.util.List;
@@ -18,10 +21,18 @@ public class MedViewModel extends AndroidViewModel {
 
     private LiveData<List<Medicine>> medList;
     private MedRepository medRepo;
+    private User mCurrentUser;
+    private SharedPreferences mSharedPref = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
+    private SharedPreferences.Editor spEditor;
 
     public MedViewModel(Application application) {
         super(application);
         medRepo = new MedRepository(getApplication());
+
+        // If there is not a user ID already created, create it.
+        if(!mSharedPref.contains("user_id")) {
+            spEditor.putInt("user_id", 0);
+        }
     }
 
     /**
@@ -57,7 +68,7 @@ public class MedViewModel extends AndroidViewModel {
     }
 
     /**
-     * Call to repository to update medication in database
+     * Call to repository to update medication in the database
      *
      * @param med - medication to be updated
      */
@@ -65,7 +76,15 @@ public class MedViewModel extends AndroidViewModel {
         medRepo.updateMedication(med);
     }
 
+    /**
+     * Call to repository to delete a medication in the database
+     * @param id
+     */
     public void deleteMedication(int id) {
         medRepo.deleteMedication(id);
+    }
+
+    public String getCurrentUser() {
+        return mCurrentUser.getUserName();
     }
 }

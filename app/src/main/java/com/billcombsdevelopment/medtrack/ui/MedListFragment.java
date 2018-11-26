@@ -1,6 +1,5 @@
 package com.billcombsdevelopment.medtrack.ui;
 
-import android.appwidget.AppWidgetManager;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -45,7 +44,7 @@ public class MedListFragment extends Fragment {
     private MedViewModel mViewModel;
     private MedListRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private AppWidgetManager mAppWidgetManager;
+
 
     public static MedListFragment newInstance() {
         return new MedListFragment();
@@ -62,8 +61,6 @@ public class MedListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-
-        mAppWidgetManager = AppWidgetManager.getInstance(getActivity());
 
         loadAd();
         initRecyclerView();
