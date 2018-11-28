@@ -13,7 +13,19 @@ import android.os.Parcelable;
 
 @Entity(tableName = "medicine", indices = {@Index(value = {"med_name"}, unique = true)})
 public class Medicine implements Parcelable {
+    public static final Parcelable.Creator<Medicine> CREATOR = new Parcelable.Creator<Medicine>() {
+        @Override
+        public Medicine createFromParcel(Parcel source) {
+            return new Medicine(source);
+        }
+
+        @Override
+        public Medicine[] newArray(int size) {
+            return new Medicine[size];
+        }
+    };
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "med_id")
     private int mId;
     @ColumnInfo(name = "med_name")
     private String mName;
@@ -21,11 +33,22 @@ public class Medicine implements Parcelable {
     private String mDose;
     @ColumnInfo(name = "directions")
     private String mDirections;
+    @ColumnInfo(name = "user_id")
+    private int mUserId;
 
-    public Medicine(String name, String dose, String directions) {
-        mName = name;
-        mDose = dose;
-        mDirections = directions;
+    public Medicine(String name, String dose, String directions, int userId) {
+        this.mName = name;
+        this.mDose = dose;
+        this.mDirections = directions;
+        this.mUserId = userId;
+    }
+
+    protected Medicine(Parcel in) {
+        this.mId = in.readInt();
+        this.mName = in.readString();
+        this.mDose = in.readString();
+        this.mDirections = in.readString();
+        this.mUserId = in.readInt();
     }
 
     public int getId() {
@@ -60,6 +83,14 @@ public class Medicine implements Parcelable {
         this.mDirections = mDirections;
     }
 
+    public int getUserId() {
+        return mUserId;
+    }
+
+    public void setUserId(int userId) {
+        this.mUserId = userId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -71,24 +102,6 @@ public class Medicine implements Parcelable {
         dest.writeString(this.mName);
         dest.writeString(this.mDose);
         dest.writeString(this.mDirections);
+        dest.writeInt(this.mUserId);
     }
-
-    protected Medicine(Parcel in) {
-        this.mId = in.readInt();
-        this.mName = in.readString();
-        this.mDose = in.readString();
-        this.mDirections = in.readString();
-    }
-
-    public static final Parcelable.Creator<Medicine> CREATOR = new Parcelable.Creator<Medicine>() {
-        @Override
-        public Medicine createFromParcel(Parcel source) {
-            return new Medicine(source);
-        }
-
-        @Override
-        public Medicine[] newArray(int size) {
-            return new Medicine[size];
-        }
-    };
 }

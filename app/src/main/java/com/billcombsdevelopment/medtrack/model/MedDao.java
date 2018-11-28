@@ -15,11 +15,8 @@ import java.util.List;
 
 @Dao
 public interface MedDao {
-    @Query("SELECT * FROM medicine")
-    LiveData<List<Medicine>> getMedList();
-
-    @Query("SELECT * FROM medicine")
-    List<Medicine> getWidgettMedList();
+    @Query("SELECT * FROM medicine WHERE user_id = :userId")
+    LiveData<List<Medicine>> getMedList(int userId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertMedicine(Medicine medicine);
@@ -27,9 +24,9 @@ public interface MedDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateMedicine(Medicine medicine);
 
-    @Query("DELETE FROM medicine WHERE mId = :id ")
+    @Query("DELETE FROM medicine WHERE med_id = :id ")
     void delete(int id);
 
-    @Query("SELECT * FROM medicine WHERE mId = :id")
-    LiveData<Medicine> loadMedById(int id);
+    @Query("SELECT * FROM user")
+    LiveData<List<User>> getUsers();
 }

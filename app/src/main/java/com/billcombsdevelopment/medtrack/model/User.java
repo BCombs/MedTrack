@@ -12,6 +12,7 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "user", indices = {@Index(value = {"user_name"}, unique = true)})
 public class User {
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "user_id")
     private int mUserId;
     @ColumnInfo(name = "user_name")
     private String mUserName;

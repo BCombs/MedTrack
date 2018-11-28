@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 
 import com.billcombsdevelopment.medtrack.model.AppDatabase;
 import com.billcombsdevelopment.medtrack.model.Medicine;
+import com.billcombsdevelopment.medtrack.model.User;
 
 import java.util.List;
 
@@ -20,24 +21,44 @@ public class MedRepository {
         mDb = AppDatabase.getInstance(context);
     }
 
-    public LiveData<List<Medicine>> getMedList() {
-        return mDb.medDao().getMedList();
+    public LiveData<List<Medicine>> getMedList(int userId) {
+        return mDb.medDao().getMedList(userId);
     }
 
+    /**
+     * Inserts a medication into the database
+     *
+     * @param medicine - The Medicine object to be inserted
+     */
     public void insertMedication(Medicine medicine) {
         new AddMedAsyncTask(mDb).execute(medicine);
     }
 
+    /**
+     * Updates a medication already in the database
+     *
+     * @param medicine - The edited Medicine object
+     */
     public void updateMedication(Medicine medicine) {
         new UpdateMedAsyncTask(mDb).execute(medicine);
     }
 
+    /**
+     * Deletes a specific medication from the database
+     *
+     * @param id - The ID of the medication
+     */
     public void deleteMedication(int id) {
         new DeleteMedAsyncTask(mDb).execute(id);
     }
 
-    public LiveData<Medicine> loadMedById(int id) {
-        return mDb.medDao().loadMedById(id);
+    /**
+     * Queries the list of users in the database
+     *
+     * @return LiveData<List   <   User>> the list of users.
+     */
+    public LiveData<List<User>> getUsers() {
+        return mDb.medDao().getUsers();
     }
 
     /**

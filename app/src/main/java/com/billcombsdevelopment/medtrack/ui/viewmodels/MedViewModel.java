@@ -21,6 +21,7 @@ public class MedViewModel extends AndroidViewModel {
 
     private LiveData<List<Medicine>> medList;
     private MedRepository medRepo;
+    private LiveData<List<User>> mUsers;
     private User mCurrentUser;
     private SharedPreferences mSharedPref = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
     private SharedPreferences.Editor spEditor;
@@ -30,8 +31,8 @@ public class MedViewModel extends AndroidViewModel {
         medRepo = new MedRepository(getApplication());
 
         // If there is not a user ID already created, create it.
-        if(!mSharedPref.contains("user_id")) {
-            spEditor.putInt("user_id", 0);
+        if (!mSharedPref.contains("user_id")) {
+            spEditor.putInt("user_id", -1);
         }
     }
 
@@ -40,10 +41,10 @@ public class MedViewModel extends AndroidViewModel {
      *
      * @return medList - The list of medications currently in the database
      */
-    public LiveData<List<Medicine>> getMedList() {
+    public LiveData<List<Medicine>> getMedList(int userID) {
         if (medList == null) {
             medList = new MutableLiveData<>();
-            medList = medRepo.getMedList();
+            medList = medRepo.getMedList(userID);
         }
         return medList;
     }
@@ -78,13 +79,22 @@ public class MedViewModel extends AndroidViewModel {
 
     /**
      * Call to repository to delete a medication in the database
+     *
      * @param id
      */
     public void deleteMedication(int id) {
         medRepo.deleteMedication(id);
     }
 
-    public String getCurrentUser() {
-        return mCurrentUser.getUserName();
+    /**
+     * Queries information about the current user and returns the user name
+     *
+     * @return
+     */
+    public void getUsers() {
+        if (mUsers == null) {
+            mUsers = new MutableLiveData<>();
+            mUsers = medRepo.getUsers();
+        }
     }
 }
