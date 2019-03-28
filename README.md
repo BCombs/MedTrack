@@ -1,6 +1,5 @@
 # MedTrack
 
-MedTrack is an app developed for the final project of Udacity's Android Developer Nanodegree. 
 MedTrack keeps track of a user's medications so they have a list of them handy at the doctor's office or during an emergency. 
 It also allows user's to set reminders to take their medication.
 
